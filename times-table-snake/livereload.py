@@ -10,9 +10,6 @@ import snake
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 
-
-
-
 def main():
     pygame.init()
     display = pygame.display.set_mode(snake.SCREEN_DIMENSIONS)
@@ -40,7 +37,6 @@ def main():
     
     start_game()
     
-
 
 if __name__ == "__main__":
     main()

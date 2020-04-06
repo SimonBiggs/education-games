@@ -17,14 +17,14 @@ SNAKE_SEGMENT_DIMENSIONS = (15, 15)
 TEXT_FONT = 'freesansbold.ttf'
 TEXT_SIZE = 12
 
-SPEED = 1
+SPEED = 5
 
 TIMES_TABLE_BASE = 2
 TIMES_TABLE_RANGE = (0, 15)
 
 NUMBER_OF_OPTIONS = 10
 
-TITLE_START = f"Times {TIMES_TABLE_BASE}    |    Maths Snake    |   "
+TITLE_START = f"{TIMES_TABLE_BASE} Times Tables   |    Maths Snake    |   "
 
 
 class Controller:
