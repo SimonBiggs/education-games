@@ -4,24 +4,26 @@ import importlib
 import pygame
 from watchdog import observers, events
 
-import snake
-
+from . import init, loop, constants, sprites
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 
 def main():
     pygame.init()
-    display = pygame.display.set_mode(snake.SCREEN_DIMENSIONS)
+    display = pygame.display.set_mode(constants.SCREEN_DIMENSIONS)
 
     path = os.path.join(HERE)    
-    controller = snake.Controller()
+    controller = init.Controller()
+    state = init.State()
 
     def start_game():
         controller.reset()
 
-        importlib.reload(snake)
-        snake.game_loop(display, controller)
+        for package in [init, loop, constants, sprites]:
+            importlib.reload(package)
+            
+        loop.game_loop(display, controller, state)
 
     controller.shutdown_callback = start_game
 
