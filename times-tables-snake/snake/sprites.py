@@ -4,7 +4,7 @@ from . import constants
 
 
 class SnakeSegment(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, x, y, screen_size):
         super().__init__()
 
         self.image = pygame.Surface(constants.SNAKE_SEGMENT_DIMENSIONS)
@@ -14,22 +14,23 @@ class SnakeSegment(pygame.sprite.Sprite):
         self.rect.center = (x, y)
 
         self.momentum = (0, constants.SPEED)
+        self.screen_size = screen_size
 
     def update(self):
         self.rect.x += self.momentum[0]
         self.rect.y += self.momentum[1]
         
-        if self.rect.center[1] > constants.SCREEN_DIMENSIONS[1]:
-            self.rect.y -= constants.SCREEN_DIMENSIONS[1]
+        if self.rect.center[1] > self.screen_size[1]:
+            self.rect.y -= self.screen_size[1]
 
         if self.rect.center[1] < 0:
-            self.rect.y += constants.SCREEN_DIMENSIONS[1]
+            self.rect.y += self.screen_size[1]
 
-        if self.rect.center[0] > constants.SCREEN_DIMENSIONS[0]:
-            self.rect.x -= constants.SCREEN_DIMENSIONS[0]
+        if self.rect.center[0] > self.screen_size[0]:
+            self.rect.x -= self.screen_size[0]
 
         if self.rect.center[0] < 0:
-            self.rect.x += constants.SCREEN_DIMENSIONS[0]
+            self.rect.x += self.screen_size[0]
 
 
 class NumberFruit(pygame.sprite.Sprite):

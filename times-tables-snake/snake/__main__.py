@@ -11,11 +11,13 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 
 def main():
     pygame.init()
-    display = pygame.display.set_mode(constants.SCREEN_DIMENSIONS)
+    display = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    surface = pygame.display.get_surface()
+    screen_size = surface.get_width(), surface.get_height()
 
     path = os.path.join(HERE)    
     controller = init.Controller()
-    state = init.State()
+    state = init.State(screen_size)
 
     def start_game():
         controller.reset()

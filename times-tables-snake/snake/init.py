@@ -34,7 +34,7 @@ class Controller:
 
 
 class State:
-    def __init__(self):
+    def __init__(self, screen_size):
         multiplier = random.randint(*constants.TIMES_TABLE_RANGE)
         answer = multiplier * constants.TIMES_TABLE_BASE
         title = f"{constants.TITLE_START}{multiplier} x {constants.TIMES_TABLE_BASE} = ?"
@@ -46,7 +46,7 @@ class State:
         self.snake_sprite_group = pygame.sprite.Group()
         self.numbers_sprite_group = pygame.sprite.Group()
 
-        segment = sprites.SnakeSegment(50, 50)
+        segment = sprites.SnakeSegment(50, 50, screen_size)
         self.snake_sprite_group.add(segment)
 
         number_fruit = sprites.NumberFruit(100, 100, 1)
